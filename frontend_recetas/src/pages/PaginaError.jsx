@@ -1,0 +1,18 @@
+import { Box, Button, Typography } from "@mui/material";
+import { TemaProvider } from "../components/ThemeProvider";
+
+function PaginaError() {
+  return (
+    <TemaProvider>
+      <Typography variant="h4" align="center" sx={{ mt: 30, ml: 2 }}>
+        No hemos encontrado la página que buscas
+      </Typography>
+      <Box textAlign={"center"} sx={{ mt: 2 }}>
+        <Button variant="contained" align="center" href="/" sx={{ mt: 2 }}>
+          Ir a la página princial
+        </Button>
+      </Box>
+    </TemaProvider>
+  );
+}
+export default PaginaError;
