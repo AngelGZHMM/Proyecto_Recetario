@@ -132,6 +132,9 @@ class RecetaController {
         );
     }
   }
+
+  
 }
+ 
 
 module.exports = RecetaController;

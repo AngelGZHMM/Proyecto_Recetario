@@ -14,9 +14,12 @@ import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select from "@mui/material/Select";
 
+/**
+ * ModificarReceta component.
+ * @returns {JSX.Element} The component.
+ */
 function ModificarReceta() {
   const { colorFondo, colorTexto } = useTema();
-
   const params = useParams();
   const [datos, setDatos] = useState({
     receta_id: params.receta_id,
@@ -37,6 +40,10 @@ function ModificarReceta() {
 
   const navigate = useNavigate();
 
+  /**
+   * Handle change for dificultad select.
+   * @param {Object} e - The event object.
+   */
   const handleChangeDificultad = (e) => {
     setDatos({
       ...datos,
@@ -60,6 +67,11 @@ function ModificarReceta() {
     getRecetaById();
   }, []); // Se ejecuta solo en el primer renderizado
 
+  /**
+   * Get color for select based on dificultad.
+   * @param {string} dificultad - The dificultad value.
+   * @returns {string} The color.
+   */
   const getSelectColor = (dificultad) => {
     switch (dificultad) {
       case "Extremo":
@@ -75,6 +87,10 @@ function ModificarReceta() {
     }
   };
 
+  /**
+   * Handle form submit.
+   * @param {Object} e - The event object.
+   */
   const handleSubmit = async (e) => {
     // No hacemos submit
     e.preventDefault();
@@ -107,6 +123,10 @@ function ModificarReceta() {
     }
   };
 
+  /**
+   * Validate form data.
+   * @returns {boolean} True if valid, false otherwise.
+   */
   function validarDatos() {
     // En principio, damos por bueno el formulario
     let validado = true;
@@ -136,6 +156,11 @@ function ModificarReceta() {
     console.log("Formulario valido:", validado);
     return validado;
   }
+
+  /**
+   * Handle change for input fields.
+   * @param {Object} e - The event object.
+   */
   const handleChange = (e) => {
     setDatos({
       ...datos,

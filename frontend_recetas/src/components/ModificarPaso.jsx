@@ -9,6 +9,11 @@ import Button from "@mui/material/Button";
 import Grid from "@mui/material/Grid2";
 import Stack from "@mui/material/Stack";
 
+/**
+ * ModificarPaso component allows the user to modify a step in a recipe.
+ * It fetches the step data and recipe data from the API and displays it in a form.
+ * The user can modify the data and submit the form to update the step.
+ */
 function ModificarPaso() {
   const { colorFondo, colorTexto } = useTema();
   const params = useParams();

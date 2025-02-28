@@ -156,6 +156,20 @@ function MenuApp() {
             />
           </ListItemButton>
         </ListItem>
+        <ListItem disablePadding>
+          <ListItemButton
+            sx={{ paddingLeft: open ? 5 : 2 }}
+            component={Link}
+            to="/graficapasos"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <PlaylistAddCircleTwoToneIcon sx={{ color: colorIcono }} />
+            <ListItemText
+              primary="Grafica Pasos"
+              sx={{ color: colorTexto, display: open ? "block" : "none" }}
+            />
+          </ListItemButton>
+        </ListItem>
 
 
 

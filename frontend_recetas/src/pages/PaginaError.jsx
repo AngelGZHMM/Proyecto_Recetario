@@ -1,6 +1,10 @@
 import { Box, Button, Typography } from "@mui/material";
 import { TemaProvider } from "../components/ThemeProvider";
 
+/**
+ * Componente de página de error que se muestra cuando no se encuentra la página solicitada.
+ * @returns {JSX.Element} El componente de la página de error.
+ */
 function PaginaError() {
   return (
     <TemaProvider>
@@ -15,4 +19,5 @@ function PaginaError() {
     </TemaProvider>
   );
 }
+
 export default PaginaError;

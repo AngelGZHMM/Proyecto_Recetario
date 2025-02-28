@@ -66,6 +66,41 @@ class PasosController {
         );
     }
   }
+// quiero recuperar el numero de pasos de cada receta
+async getGraficaPasos(req, res) {
+  try {
+    const pasosGrafica = await Pasos.findAll({
+      attributes: [
+        "receta",
+        [sequelize.fn("COUNT", sequelize.col("orden")), "numpasos"]
+      ],
+      group: ["receta"],
+      raw: true
+    });
+    res.json(Respuesta.exito(pasosGrafica, "Datos de pasos recuperados"));
+  } catch (err) {
+    logMensaje("Error al recuperar los datos de pasos: " + err);
+    res.status(500).json(
+      Respuesta.error(
+        null,
+        `Error al recuperar los datos de pasos: ${req.originalUrl}`
+      )
+    );
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
   //Crear un paso
   async createPaso(req, res) {
     try {

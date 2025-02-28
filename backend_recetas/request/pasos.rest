@@ -39,4 +39,9 @@ Content-Type: application/json
     "necesario" : 1
 }
 
+###
+#Mostrar num pasos de receta 3
+# router.get('/numeroPasos/:receta', pasosController.getNumeroPasosByReceta);
+GET http://localhost:3000/api/pasos/grafica
+
 

@@ -25,6 +25,9 @@ import DeleteForeverIcon from "@mui/icons-material/DeleteForeverTwoTone";
 import EditNoteIcon from "@mui/icons-material/ModeEditTwoTone";
 import { useNavigate } from "react-router";
 import Modal from "@mui/material/Modal";
+import generatePDF from "../utils/generatePDF.js";
+import { PDFDownloadLink } from "@react-pdf/renderer";
+import ListarPasosporRecetaPDF from "./ListarPasosporRecetaPdf"; // Importa el nuevo componente PDF
 
 const descendingComparator = (a, b, orderBy) => {
   if (b[orderBy] < a[orderBy]) return -1;
@@ -550,6 +553,26 @@ const ListarPasosproReceta = () => {
         label="Comprimir tabla"
         sx={{ color: colorTexto }}
       />
+
+          <Button variant="contained" onClick={() => generatePDF("pdf-content")}>
+          Imprimir listado (jsPDF + html2canvas)
+        </Button>
+          <Button variant="contained">
+  <PDFDownloadLink
+    document={<ListarPasosporRecetaPDF data={rows} receta={receta} />}
+    fileName="pasos-receta.pdf"
+  >
+    {({ loading }) =>
+      loading ? "Generando PDF..." : "Imprimir listado (react-pdf)"
+    }
+  </PDFDownloadLink>
+</Button>
+<Button variant="contained" onClick={() => window.print()}>
+          Imprimir listado (navegador)
+        </Button>
+
+
+
       <Modal
         open={open}
         onClose={handleClose}

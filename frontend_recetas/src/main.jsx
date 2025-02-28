@@ -1,7 +1,6 @@
 import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 
-
 import "@fontsource/roboto/300.css";
 import "@fontsource/roboto/400.css";
 import "@fontsource/roboto/500.css";
@@ -22,14 +21,17 @@ import InsertarPaso from "./components/InsertarPaso";
 import InsertarPasoparaReceta from "./components/InsertarPasoparaReceta";
 import ModificarPaso from "./components/ModificarPaso";
 import Inicio from "./components/Inicio";
+import GraficaPasos from "./components/GraficaPasos";
 
-
+/**
+ * Define las rutas para la aplicación.
+ * @type {import('react-router').RouteObject[]}
+ */
 let router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
     errorElement: <PaginaError/>,
-
     children: [
       {
         path:"/",
@@ -71,13 +73,17 @@ let router = createBrowserRouter([
         path: "insertarpasoparareceta/:receta_id",
         element: <InsertarPasoparaReceta/>,
       },
-      // hacer un apartado con Collapsible table
-      // poner los insert de fecha bien
-
+      {
+        path: "graficapasos",
+        element: <GraficaPasos/>,
+      },
     ],
   },
 ]);
 
+/**
+ * Renderiza la aplicación.
+ */
 createRoot(document.getElementById('root')).render(
   <StrictMode>
     <RouterProvider router={router} />

@@ -19,6 +19,10 @@ import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 
 import FactCheckTwoToneIcon from '@mui/icons-material/FactCheckTwoTone';
 
+/**
+ * ListaRecetas component - Displays a list of recipes with search and filter functionality.
+ * @returns {JSX.Element} The rendered component.
+ */
 function ListaRecetas() {
   const [rows, setRows] = useState([]);
   const [searchQuery, setSearchQuery] = useState(""); // Estado para el cuadro de búsqueda
@@ -44,6 +48,10 @@ function ListaRecetas() {
     getRecetas();
   }, []);
 
+  /**
+   * Handles the deletion of a recipe.
+   * @param {number} receta_id - The ID of the recipe to delete.
+   */
   const handleDelete = async (receta_id) => {
     try {
       let response = await fetch(`${apiUrl}/receta/${receta_id}`, {
@@ -58,10 +66,18 @@ function ListaRecetas() {
     }
   };
 
+  /**
+   * Handles the change in the search query.
+   * @param {object} event - The event object.
+   */
   const handleSearchChange = (event) => {
     setSearchQuery(event.target.value);
   };
 
+  /**
+   * Handles the change in the search column.
+   * @param {object} event - The event object.
+   */
   const handleSearchColumnChange = (event) => {
     setSearchColumn(event.target.value);
     setSearchQuery(""); // Reiniciar el cuadro de búsqueda al cambiar la columna
@@ -69,6 +85,10 @@ function ListaRecetas() {
     setEndDate(null); // Reiniciar la fecha de fin al cambiar la columna
   };
 
+  /**
+   * Handles the change in the search difficulty.
+   * @param {object} event - The event object.
+   */
   const handleSearchDifficultyChange = (event) => {
     setSearchQuery(event.target.value);
   };

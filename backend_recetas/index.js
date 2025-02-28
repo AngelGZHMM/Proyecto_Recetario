@@ -1,5 +1,7 @@
 //importar libreria para manejo de configuracion
 require('dotenv').config();
+
+const config = require("./config/config");
 // Importar librería express --> web server
 const express = require("express");
 // Importar librería path, para manejar rutas de ficheros en el servidor
@@ -31,8 +33,19 @@ app.use((err, req, res, next) => {
   console.error(err.stack);
   res.status(500).send("Something broke!");
 });
+app.use(
+  cors({
+    origin: "http://localhost:5173", // Asegúrate de que este sea el origen de tu frontend
+    credentials: true, // Permite cookies y autenticación
+  })
+);
 
-// Iniciar el servidor
-app.listen(port, () => {
-  console.log(`Servidor escuchando en el puerto ${port}`);
-});
+
+// Iniciar el servidor solo si no estamos en modo de prueba 
+if (process.env.NODE_ENV !== "test") { 
+  app.listen(config.port, () => { 
+  console.log(`Servidor escuchando en el puerto ${config.port}`); 
+  }); 
+  } 
+  // Exportamos la aplicación para poder hacer pruebas 
+  module.exports = app;

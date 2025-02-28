@@ -27,7 +27,7 @@ Content-Type: application/json
 
 {
     "receta_id":null,
-    "nombre": "Receta de pollo",
+    "nombre": "Pruebas variadas",
     "imagen" : "https://www.recetasgratis.net/medio/images/2017/08/03/Pollo-al-curry-con-arroz-basmati-780x520.jpg",
     "descripcion": "Receta de pollo con arroz",
     "tiempo_preparacion": 30,
